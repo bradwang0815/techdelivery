@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
+import { config } from "../config";
 
 import Marquee from "react-fast-marquee";
 
@@ -46,7 +47,7 @@ const Loading = ({ percent }: { percent: number }) => {
     <>
       <div className="loading-header">
         <a href="/#" className="loader-title" data-cursor="disable">
-          RedoyanulHaque
+          {config.ui.loading.brand}
         </a>
         <div className={`loaderGame ${clicked && "loader-out"}`}>
           <div className="loaderGame-container">
@@ -62,8 +63,10 @@ const Loading = ({ percent }: { percent: number }) => {
       <div className="loading-screen">
         <div className="loading-marquee">
           <Marquee>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
+            <span>&nbsp; {config.ui.loading.marquee} &nbsp;</span>{" "}
+            <span>&nbsp; {config.ui.loading.marqueeAlt} &nbsp;</span>
+            <span>&nbsp; {config.ui.loading.marquee} &nbsp;</span>{" "}
+            <span>&nbsp; {config.ui.loading.marqueeAlt} &nbsp;</span>
           </Marquee>
         </div>
         <div
@@ -75,13 +78,13 @@ const Loading = ({ percent }: { percent: number }) => {
             <div className="loading-container">
               <div className="loading-content">
                 <div className="loading-content-in">
-                  Loading <span>{percent}%</span>
+                  {config.ui.loading.loading} <span>{percent}%</span>
                 </div>
               </div>
               <div className="loading-box"></div>
             </div>
             <div className="loading-content2">
-              <span>Welcome</span>
+              <span>{config.ui.loading.welcome}</span>
             </div>
           </div>
         </div>

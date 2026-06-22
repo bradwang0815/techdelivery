@@ -1,14 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap");
 
 :root {
-  font-family: "Geist", sans-serif;
+  --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "MS PMincho", serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Meiryo", sans-serif;
 
+  --accentColor: #e8c872;
+  --accentSecondary: #a8e6a3;
+  --accentWarm: #f4a4c8;
+  --accentLavender: #c9b8f0;
+  --accentGlow: rgba(232, 200, 114, 0.5);
+  --accentGlowGreen: rgba(168, 230, 163, 0.35);
+  --accentGlowPink: rgba(244, 164, 200, 0.35);
+
+  --backgroundColor: #0a1410;
+  --backgroundElevated: #122019;
+  --backgroundCard: rgba(18, 32, 25, 0.78);
+
+  --textPrimary: #f5f0e6;
+  --textSecondary: rgba(245, 240, 230, 0.72);
+  --textMuted: rgba(245, 240, 230, 0.45);
+
+  --glass-bg: rgba(255, 252, 245, 0.05);
+  --glass-border: rgba(232, 200, 114, 0.14);
+  --glass-highlight: rgba(255, 248, 220, 0.12);
+
+  --gradient-text: linear-gradient(
+    125deg,
+    #fff8e7 0%,
+    #e8c872 28%,
+    #f4a4c8 55%,
+    #a8e6a3 78%,
+    #c9b8f0 100%
+  );
+  --gradient-accent: linear-gradient(135deg, #e8c872 0%, #a8e6a3 50%, #f4a4c8 100%);
+  --gradient-border: linear-gradient(
+    135deg,
+    rgba(232, 200, 114, 0.55),
+    rgba(168, 230, 163, 0.4),
+    rgba(244, 164, 200, 0.35)
+  );
+  --gradient-aurora: radial-gradient(
+      ellipse 75% 55% at 15% 0%,
+      rgba(168, 230, 163, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 88% 12%,
+      rgba(244, 164, 200, 0.14),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 50% 100%,
+      rgba(232, 200, 114, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 70% 60%,
+      rgba(201, 184, 240, 0.1),
+      transparent 50%
+    );
+
+  --shadow-glow: 0 0 40px rgba(232, 200, 114, 0.15);
+  --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 1.75;
+  font-feature-settings: "palt" 1;
   scroll-behavior: smooth;
-  color-scheme: light dark;
-  color: #eae5ec;
+  color-scheme: dark;
+  color: var(--textPrimary);
   background-color: var(--backgroundColor);
 
   font-synthesis: none;
@@ -18,8 +80,6 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  --accentColor: #c2a4ff;
-  --backgroundColor: #0b080c;
   --vh: 100vh;
   --vh: 100svh;
 }
@@ -30,14 +90,110 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Geist", sans-serif;
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 body {
+  margin: 0;
+  height: auto;
+  background-color: var(--backgroundColor);
+  flex-grow: 1;
+  --cWidth: calc(100% - 30px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   overflow: hidden;
 }
 
-/* Allow scrolling on mobile */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--gradient-aurora);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-bg::before,
+.ambient-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: fairyFloat 20s ease-in-out infinite alternate;
+}
+
+.ambient-bg::before {
+  width: 45vw;
+  height: 45vw;
+  top: -10%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(168, 230, 163, 0.35), transparent 68%);
+}
+
+.ambient-bg::after {
+  width: 38vw;
+  height: 38vw;
+  right: -10%;
+  bottom: 5%;
+  background: radial-gradient(circle, rgba(244, 164, 200, 0.28), transparent 68%);
+  animation-delay: -10s;
+}
+
+.ambient-bg .fireflies {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(1px 1px at 10% 20%, rgba(255, 248, 220, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 30% 65%, rgba(232, 200, 114, 0.7), transparent),
+    radial-gradient(1px 1px at 55% 15%, rgba(168, 230, 163, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 72% 42%, rgba(244, 164, 200, 0.75), transparent),
+    radial-gradient(1px 1px at 88% 78%, rgba(255, 248, 220, 0.85), transparent),
+    radial-gradient(1px 1px at 18% 88%, rgba(201, 184, 240, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 45% 38%, rgba(232, 200, 114, 0.65), transparent),
+    radial-gradient(1px 1px at 92% 22%, rgba(168, 230, 163, 0.75), transparent);
+  animation: fireflyTwinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes fairyFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(4%, 5%) scale(1.1);
+  }
+}
+
+@keyframes fireflyTwinkle {
+  0% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   body {
     overflow: auto !important;
@@ -52,7 +208,6 @@ body {
     touch-action: manipulation;
   }
 
-  /* Ensure no fixed elements block scrolling */
   .container-main {
     position: static !important;
     height: auto !important;
@@ -62,15 +217,23 @@ body {
 a {
   color: inherit;
   text-decoration: inherit;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
 a:hover {
   color: var(--accentColor);
 }
 
+::selection {
+  background: rgba(232, 200, 114, 0.35);
+  color: #fff;
+}
+
 main {
   opacity: 1;
   transition: 0.3s;
+  position: relative;
+  z-index: 2;
 }
 
 .main-active {
@@ -85,28 +248,19 @@ main {
   }
 }
 
-body {
-  margin: 0;
-  height: auto;
-  background-color: #000;
-  flex-grow: 1;
-  --cWidth: calc(100% - 30px);
-  --cMaxWidth: 1920px;
-  max-width: 100vw;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
 .main-body {
   max-width: 100vw;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 2;
 }
 
 .container-main {
   width: 100%;
   margin: auto;
   position: relative;
+  z-index: 2;
 }
 
 .container1 {
@@ -127,55 +281,12 @@ body {
   flex-wrap: nowrap;
 }
 
-.techstack {
-  width: 100%;
-  position: relative;
-  height: var(--vh);
-  min-height: 100vh;
-  margin: 0 auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 150px;
-  padding-bottom: 150px;
-  background: linear-gradient(180deg, rgba(11, 8, 12, 0.95) 0%, rgba(11, 8, 12, 0.98) 100%);
-  background-color: var(--backgroundColor);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.techstack::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(194, 164, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(194, 164, 255, 0.08) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.techstack>* {
-  position: relative;
-  z-index: 1;
-}
-
-.techstack h2 {
-  font-size: 80px;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  top: 150px;
-  left: 0;
-  font-weight: 400;
-  text-transform: uppercase;
-  z-index: 3;
-  margin: 0;
+.gradient-text {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -184,8 +295,10 @@ body {
   }
 }
 
-@media screen and (max-width: 900px) {
-  .techstack h2 {
-    font-size: 40px;
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg::before,
+  .ambient-bg::after,
+  .ambient-bg .fireflies {
+    animation: none;
   }
 }

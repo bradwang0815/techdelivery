@@ -30,22 +30,21 @@
     bottom: auto !important;
     transform: none !important;
     padding-top: 40px;
-    /* Shift higher up */
     margin-bottom: 20px;
-    z-index: 10;
+    z-index: 20;
     text-align: center;
     width: 100% !important;
+    max-width: 100% !important;
     order: 1;
-    /* First: Name */
     height: auto !important;
   }
 
   .landing-intro h1 {
     word-spacing: 0.1em;
-    font-size: 32px !important;
-    /* Ensure nice size */
-    line-height: 1.2 !important;
+    font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+    line-height: 1.3 !important;
     margin: 0;
+    padding: 0 8px;
   }
 
   /* Ensure name parts display correctly */
@@ -67,29 +66,39 @@
     transform: none !important;
     text-align: center;
     margin-top: 20px;
-    /* Space between name and subtitles */
-    z-index: 10;
+    z-index: 20;
     background: transparent;
     padding-bottom: 50px;
-    /* Add bottom padding for scroll space */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     height: auto !important;
-    /* Force auto height */
     width: 100% !important;
+    max-width: 100% !important;
     order: 3;
-    /* Third: Subtitles */
+  }
+
+  .landing-role,
+  .landing-role--primary {
+    text-align: center;
+    font-size: clamp(1rem, 4.5vw, 1.35rem) !important;
+    line-height: 1.5 !important;
+    max-width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  .landing-role--primary {
+    font-size: clamp(1.15rem, 5vw, 1.5rem) !important;
   }
 
   .landing-info h3 {
     text-align: center;
     display: none;
-    /* Hide 'An' if not needed, or keep it static */
   }
 
-  /* Force static positioning to prevent overlaps */
+  /* Legacy mobile overrides */
   .landing-info h2,
   h2.landing-info-h2,
   .landing-h2-1,
@@ -97,26 +106,25 @@
     position: static !important;
     display: block;
     width: auto;
+    max-width: 100%;
     margin: 0 !important;
-    font-size: 20px !important;
+    font-size: clamp(1rem, 4.5vw, 1.35rem) !important;
     line-height: 1.5 !important;
     white-space: normal;
     text-align: center;
     height: auto !important;
     transform: none !important;
-    /* Remove any transforms */
   }
 
-  /* Specific styling for the distinct parts */
   .landing-h2-1 {
-    font-size: 24px !important;
+    font-size: clamp(1.15rem, 5vw, 1.5rem) !important;
     color: var(--accentColor);
     font-weight: 700;
   }
 
   .landing-h2-info {
-    font-size: 18px !important;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.95rem, 4vw, 1.2rem) !important;
+    color: var(--textSecondary);
   }
 
   .landing-info-h2::after {
@@ -144,7 +152,7 @@
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(194, 164, 255, 0.4));
+    filter: drop-shadow(0 0 40px rgba(232, 200, 114, 0.35));
   }
 }
 
@@ -162,6 +170,7 @@
   height: 100%;
   position: relative;
   max-width: var(--cMaxWidth);
+  z-index: 15;
 }
 
 .landing-circle1 {
@@ -169,13 +178,14 @@
   left: 0%;
   z-index: 15;
   position: fixed;
-  width: 300px;
-  height: 300px;
-  background-color: #fb8dff;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
-  filter: blur(60px);
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #a8e6a3 0%, #5a9e6f 40%, transparent 70%);
+  box-shadow: 0 0 120px rgba(168, 230, 163, 0.4);
+  filter: blur(70px);
   border-radius: 50%;
-  animation: loadingCircle 5s linear infinite;
+  animation: loadingCircle 8s linear infinite;
+  opacity: 0.75;
 }
 
 .nav-fade {
@@ -209,13 +219,14 @@
   z-index: 9;
   position: fixed;
   display: none;
-  width: 300px;
-  height: 300px;
-  background-color: #fb8dff;
-  box-shadow: inset -50px 40px 50px rgba(84, 0, 255, 0.6);
-  filter: blur(50px);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, #f4a4c8 0%, #d878a8 35%, transparent 70%);
+  box-shadow: 0 0 100px rgba(244, 164, 200, 0.35);
+  filter: blur(65px);
   border-radius: 50%;
-  animation: loadingCircle2 5s linear infinite;
+  animation: loadingCircle2 10s linear infinite;
+  opacity: 0.6;
 }
 
 @keyframes loadingCircle2 {
@@ -244,9 +255,9 @@
   width: 400px;
   height: 400px;
   z-index: 1;
-  background-color: #f59bf8;
+  background-color: #a8e6a3;
   transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
+  box-shadow: inset 66px 35px 85px 0px rgba(232, 200, 114, 0.45);
   filter: blur(50px);
   border-radius: 50%;
   top: 50%;
@@ -320,31 +331,43 @@
 
 .landing-intro {
   position: absolute;
-  z-index: 9;
+  z-index: 20;
   top: 5%;
   left: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-right: 12px;
 }
 
 .landing-intro h2 {
   margin: 0;
-  color: var(--accentColor);
+  color: var(--accentSecondary);
   font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 2px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
 }
 
 .landing-intro h1 {
   margin: 0;
-  letter-spacing: 2px;
+  margin-top: 0.35em;
+  letter-spacing: 0.08em;
   font-size: 28px;
-  line-height: 28px;
-  font-weight: 500;
-  font-family: "Geist", sans-serif;
+  line-height: 1.25;
+  font-weight: 600;
+  font-family: var(--font-display);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
-/* .landing-intro h1 span {
-   font-weight: 200; 
-} */
+.landing-intro h1.gradient-text,
+.landing-intro h1.gradient-text span,
+.landing-intro h1.gradient-text .split-char {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 
 .landing-info {
   position: absolute;
@@ -352,7 +375,32 @@
   transform: translateX(50%);
   bottom: 40px;
   top: inherit;
-  z-index: 9;
+  z-index: 20;
+  max-width: calc(100% - 24px);
+  box-sizing: border-box;
+}
+
+.landing-role {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.8vw, 2rem);
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.landing-role--primary {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accentColor);
+  font-size: clamp(1.25rem, 3.2vw, 2.35rem);
+  margin-bottom: 0.35em;
 }
 
 .landing-info h3 {
@@ -363,60 +411,44 @@
   margin: 0;
 }
 
+/* Legacy selectors kept for initialFX compatibility */
 .landing-info h2 {
   margin: 0;
-  margin-top: -20px;
-  margin-left: 20px;
-  font-family: "Geist", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 28px;
-  line-height: 40px;
+  font-size: clamp(1.1rem, 2.8vw, 2rem);
+  line-height: 1.45;
   position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  letter-spacing: 0.06em;
 }
 
 .landing-h2-info {
-  white-space: nowrap;
+  white-space: normal;
+  color: var(--textSecondary);
 }
 
-.landing-h2-info-1 {
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-h2.landing-info-h2 {
-  color: #c481ff;
-  font-size: 36px;
-  width: 150%;
+h2.landing-info-h2,
+.landing-h2-1 {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accentColor);
+  font-size: clamp(1.25rem, 3.2vw, 2.35rem);
+  width: auto;
+  max-width: 100%;
   margin: 0;
-  font-family: "Geist", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
   position: relative;
-  margin-left: -5px;
-}
-
-.landing-h2-2 {
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
 }
 
 .landing-info-h2::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  z-index: 3;
-  background-image: linear-gradient(0deg,
-      var(--backgroundColor) 40%,
-      rgba(0, 0, 0, 0) 110%);
-  top: 0;
-  left: 0;
+  display: none;
 }
 
 @media screen and (min-width: 500px) {
@@ -442,12 +474,13 @@ h2.landing-info-h2 {
   }
 
   .landing-info h2 {
-    font-size: 35px;
-    line-height: 40px;
+    font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+    line-height: 1.4;
   }
 
-  h2.landing-info-h2 {
-    font-size: 38px;
+  h2.landing-info-h2,
+  .landing-role--primary {
+    font-size: clamp(1.2rem, 2.8vw, 2rem);
   }
 }
 
@@ -469,13 +502,15 @@ h2.landing-info-h2 {
     font-size: 25px;
   }
 
-  .landing-info h2 {
-    font-size: 45px;
-    line-height: 42px;
+  .landing-info h2,
+  .landing-role {
+    font-size: clamp(1.15rem, 2.2vw, 1.85rem);
+    line-height: 1.4;
   }
 
-  h2.landing-info-h2 {
-    font-size: 55px;
+  h2.landing-info-h2,
+  .landing-role--primary {
+    font-size: clamp(1.3rem, 2.6vw, 2.1rem);
   }
 }
 
@@ -493,39 +528,52 @@ h2.landing-info-h2 {
   }
 
   .landing-intro {
-    top: 40%;
-    left: auto;
-    right: 66%;
-    transform: translate(0%, -50%);
+    top: 38%;
+    left: 4%;
+    right: auto;
+    transform: translateY(-50%);
+    max-width: min(380px, 34vw);
   }
 
   .landing-info {
     bottom: auto;
-    top: 51%;
-    z-index: inherit;
+    top: 52%;
+    z-index: 20;
     text-align: left;
-    transform: translate(0%, -50%);
-    right: auto;
-    left: 66%;
+    transform: translateY(-50%);
+    left: auto;
+    right: 4%;
+    max-width: min(420px, 36vw);
+  }
+
+  .landing-role,
+  .landing-info h2 {
+    font-size: clamp(1rem, 1.6vw, 1.65rem);
+    line-height: 1.45;
+  }
+
+  .landing-role--primary,
+  h2.landing-info-h2 {
+    font-size: clamp(1.15rem, 1.9vw, 1.85rem);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .landing-intro {
-    top: 40%;
-    left: auto;
-    right: 70%;
-    transform: translate(0%, -50%);
+    top: 38%;
+    left: 5%;
+    max-width: min(400px, 32vw);
   }
 
   .landing-info {
-    bottom: auto;
-    top: 51%;
-    z-index: inherit;
-    text-align: left;
-    transform: translate(0%, -50%);
-    right: auto;
-    left: 70%;
+    top: 52%;
+    right: 5%;
+    max-width: min(440px, 34vw);
+  }
+
+  .landing-intro h1 {
+    font-size: clamp(2.25rem, 3.2vw, 3.5rem);
+    line-height: 1.2;
   }
 }
 
@@ -535,20 +583,21 @@ h2.landing-info-h2 {
   }
 
   .landing-intro h1 {
-    font-size: 60px;
-    line-height: 55px;
+    font-size: clamp(2.75rem, 3.5vw, 4rem);
+    line-height: 1.15;
   }
 
   .landing-info h3 {
     font-size: 35px;
   }
 
+  .landing-role,
   .landing-info h2 {
-    font-size: 65px;
-    line-height: 62px;
+    font-size: clamp(1.2rem, 1.5vw, 1.9rem);
   }
 
+  .landing-role--primary,
   h2.landing-info-h2 {
-    font-size: 75px;
+    font-size: clamp(1.4rem, 1.8vw, 2.15rem);
   }
 }

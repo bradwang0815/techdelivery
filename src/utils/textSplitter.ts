@@ -67,18 +67,49 @@ export class TextSplitter {
 
   private splitWords(element: Element) {
     const text = element.textContent || "";
-    const words = text.split(/(\s+)/);
+    const words = this.tokenizeText(text);
 
     element.innerHTML = words
       .map((word) => {
         if (word.trim().length === 0) {
-          return word; // Preserve whitespace
+          return word;
         }
         return `<span class="split-word">${word}</span>`;
       })
       .join("");
 
     this.words.push(...Array.from(element.querySelectorAll(".split-word")));
+  }
+
+  private tokenizeText(text: string): string[] {
+    const tokens: string[] = [];
+    let latinBuffer = "";
+
+    const flushLatin = () => {
+      if (latinBuffer) {
+        tokens.push(latinBuffer);
+        latinBuffer = "";
+      }
+    };
+
+    for (const char of text) {
+      if (/\s/.test(char)) {
+        flushLatin();
+        tokens.push(char);
+        continue;
+      }
+
+      if (/[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uff66-\uff9f]/.test(char)) {
+        flushLatin();
+        tokens.push(char);
+        continue;
+      }
+
+      latinBuffer += char;
+    }
+
+    flushLatin();
+    return tokens;
   }
 
   private splitCharsFromWords(element: Element) {

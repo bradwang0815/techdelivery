@@ -7,12 +7,12 @@ const MyWorks = () => {
     <div className="myworks-page">
       <div className="myworks-header">
         <Link to="/" className="back-button" data-cursor="disable">
-          ← Back to Home
+          {config.ui.myWorks.back}
         </Link>
         <h1>
-          All <span>Works</span>
+          {config.ui.myWorks.title} <span>{config.ui.myWorks.titleSpan}</span>
         </h1>
-        <p>A collection of all my projects and creations</p>
+        <p>{config.ui.myWorks.subtitle}</p>
       </div>
 
       <div className="myworks-grid">

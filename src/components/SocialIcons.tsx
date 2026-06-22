@@ -10,13 +10,22 @@ import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
 import { config } from "../config";
 
+const socialLinks = [
+  { href: config.contact.github, icon: <FaGithub /> },
+  { href: config.contact.linkedin, icon: <FaLinkedinIn /> },
+  { href: config.contact.twitter, icon: <FaXTwitter /> },
+  { href: config.contact.instagram, icon: <FaInstagram /> },
+].filter((item) => item.href && item.href !== "#");
+
 const SocialIcons = () => {
   useEffect(() => {
     const social = document.getElementById("social") as HTMLElement;
+    if (!social) return;
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
       const link = elem.querySelector("a") as HTMLElement;
+      if (!link) return;
 
       const rect = elem.getBoundingClientRect();
       let mouseX = rect.width / 2;
@@ -52,37 +61,32 @@ const SocialIcons = () => {
       updatePosition();
 
       return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mousemove", onMouseMove);
       };
     });
   }, []);
 
   return (
     <div className="icons-section">
-      <div className="social-icons" data-cursor="icons" id="social">
-        <span>
-          <a href={config.contact.github} target="_blank" rel="noopener noreferrer">
-            <FaGithub />
-          </a>
-        </span>
-        <span>
-          <a href={config.contact.linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn />
-          </a>
-        </span>
-        <span>
-          <a href={config.contact.twitter} target="_blank" rel="noopener noreferrer">
-            <FaXTwitter />
-          </a>
-        </span>
-        <span>
-          <a href={config.contact.instagram} target="_blank" rel="noopener noreferrer">
-            <FaInstagram />
-          </a>
-        </span>
-      </div>
-      <a className="resume-button" href="#">
-        <HoverLinks text="RESUME" />
+      {socialLinks.length > 0 && (
+        <div className="social-icons" data-cursor="icons" id="social">
+          {socialLinks.map((item, index) => (
+            <span key={index}>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">
+                {item.icon}
+              </a>
+            </span>
+          ))}
+        </div>
+      )}
+      <a
+        className="resume-button"
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cursor="disable"
+      >
+        <HoverLinks text={config.ui.resume} />
         <span>
           <TbNotes />
         </span>

@@ -15,9 +15,9 @@
 .career-section h2 {
   font-size: 70px;
   line-height: 70px;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
-  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background: var(--gradient-text);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -27,7 +27,7 @@
 }
 
 .career-section h2>span {
-  font-family: "Geist", sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
 }
 
@@ -75,12 +75,12 @@
 }
 
 .career-info h5 {
-  font-weight: 400;
-  letter-spacing: 0.7px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   font-size: 20px;
   text-transform: capitalize;
   margin: 10px 0px;
-  color: var(--accentColor);
+  color: var(--accentSecondary);
 }
 
 .career-timeline {
@@ -88,13 +88,16 @@
   top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  width: 3px;
+  width: 2px;
   height: 100%;
-  background-image: linear-gradient(to top,
-      #aa42ff 20%,
-      var(--accentColor) 50%,
-      transparent 95%);
+  background-image: linear-gradient(
+    to top,
+    #a8e6a3 15%,
+    #e8c872 45%,
+    transparent 95%
+  );
   max-height: 0%;
+  box-shadow: 0 0 12px rgba(232, 200, 114, 0.35);
 }
 
 .career-dot {
@@ -102,12 +105,12 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #aa42ff;
+  background-color: #e8c872;
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 8px #d097ff,
-    0px 0px 110px 20px #f2c0ff;
+  box-shadow: 0px 0px 5px 2px rgba(232, 200, 114, 0.8), 0px 0px 15px 8px rgba(168, 230, 163, 0.5),
+    0px 0px 110px 20px rgba(244, 164, 200, 0.35);
   animation: timeline 0.8s linear infinite forwards;
 }
 
@@ -118,7 +121,7 @@
   50%,
   70%,
   90% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
+    box-shadow: 0px 0px 5px 2px rgba(232, 200, 114, 0.7);
   }
 
   10%,
@@ -127,19 +130,19 @@
   100%,
   64%,
   80% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
+    box-shadow: 0px 0px 5px 2px rgba(232, 200, 114, 0.7), 0px 0px 15px 5px rgba(168, 230, 163, 0.45),
+      0px 0px 110px 20px rgba(244, 164, 200, 0.3);
   }
 }
 
 @keyframes timeline2 {
   0% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
+    box-shadow: 0px 0px 5px 2px rgba(232, 200, 114, 0.7);
   }
 
   100% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
+    box-shadow: 0px 0px 5px 2px rgba(232, 200, 114, 0.7), 0px 0px 15px 5px rgba(168, 230, 163, 0.45),
+      0px 0px 110px 20px rgba(244, 164, 200, 0.3);
   }
 }
 

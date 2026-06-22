@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
+import { config } from "../config";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -67,29 +68,35 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          RH
+          {config.ui.nav.brand}
         </a>
-        <a
-          href="mailto:redoyanul1234@gmail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          redoyanul1234@gmail.com
-        </a>
+        {config.social.email ? (
+          <a
+            href={`mailto:${config.social.email}`}
+            className="navbar-connect"
+            data-cursor="disable"
+          >
+            {config.social.email}
+          </a>
+        ) : (
+          <a href="#contact" className="navbar-connect" data-cursor="disable">
+            お問い合わせ
+          </a>
+        )}
         <ul>
           <li>
             <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
+              <HoverLinks text={config.ui.nav.about} />
             </a>
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+              <HoverLinks text={config.ui.nav.work} />
             </a>
           </li>
           <li>
             <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
+              <HoverLinks text={config.ui.nav.contact} />
             </a>
           </li>
         </ul>

@@ -7,6 +7,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
 .social-icons {
   position: absolute;
   left: -20px;
@@ -17,20 +18,14 @@
   z-index: 999;
   padding: 10px;
 }
-.social-icons:hover {
-  transition: 0.3s;
-  color: var(--backgroundColor);
-}
-.social-icons a:hover {
-  color: var(--backgroundColor);
-  /* transform: scale(1.2); */
-}
+
 .social-icons span {
   width: 50px;
   height: 50px;
   position: relative;
   display: flex;
 }
+
 .social-icons a {
   --siLeft: 50%;
   --siTop: 50%;
@@ -41,8 +36,15 @@
   display: flex;
   font-size: 23px;
   will-change: left, top;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, color 0.25s ease, filter 0.25s ease;
+  color: var(--textSecondary);
 }
+
+.social-icons a:hover {
+  color: var(--accentSecondary);
+  filter: drop-shadow(0 0 8px rgba(232, 200, 114, 0.45));
+}
+
 .resume-button {
   position: absolute;
   z-index: 99;
@@ -52,50 +54,53 @@
   right: 0;
   width: auto;
   text-wrap: nowrap;
-  letter-spacing: 4px;
+  letter-spacing: 0.25em;
   font-size: 15px;
   line-height: 15px;
   font-weight: 600;
-  color: #5e5e5e;
+  color: var(--textMuted);
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.35s ease;
   transform-origin: left bottom;
   transform: translateX(100%) rotateZ(-90deg);
 }
+
 .resume-button:hover {
-  color: #fff;
+  color: var(--accentSecondary);
+  text-shadow: 0 0 20px rgba(232, 200, 114, 0.35);
 }
+
 div.resume-button span {
-  color: #fff;
+  color: var(--accentColor);
   font-size: 17px;
   margin-top: -1px;
   display: flex;
   align-items: center;
+  transition: color 0.35s ease;
 }
-.check-line {
-  position: fixed;
-  top: 655px;
-  left: 0;
-  height: 1px;
-  background-color: #ffffff;
-  width: 100%;
-  z-index: 99999;
+
+.resume-button:hover span {
+  color: var(--accentSecondary);
 }
+
 @media only screen and (min-width: 900px) {
   .social-icons {
     display: flex;
     gap: 20px;
   }
+
   .social-icons a {
     font-size: 28px;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .resume-button {
     transform: none;
     font-size: 20px;
     line-height: 20px;
   }
+
   div.resume-button span {
     font-size: 23px;
     margin-top: -1.5px;

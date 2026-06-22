@@ -1,0 +1,446 @@
+.fairy-garden-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Ambient layer (moved from index) ── */
+.fairy-garden-bg .ambient-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.fairy-garden-bg .mushroom-glow {
+  position: absolute;
+  width: 180px;
+  height: 120px;
+  bottom: 8%;
+  border-radius: 50% 50% 40% 40%;
+  filter: blur(28px);
+  opacity: 0.35;
+  animation: mushroomPulse 5s ease-in-out infinite alternate;
+}
+
+.fairy-garden-bg .mushroom-glow--left {
+  left: 6%;
+  background: radial-gradient(ellipse, rgba(168, 230, 163, 0.5), transparent 70%);
+}
+
+.fairy-garden-bg .mushroom-glow--right {
+  right: 8%;
+  background: radial-gradient(ellipse, rgba(244, 164, 200, 0.45), transparent 70%);
+  animation-delay: -2.5s;
+}
+
+@keyframes mushroomPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.28;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.45;
+  }
+}
+
+/* ── Flying fairies ── */
+.fairy-sky {
+  position: absolute;
+  inset: 0;
+}
+
+.fairy-flyer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 64px;
+  transform: scale(var(--fairy-scale, 1));
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+.fairy-sprite {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.fairy-sprite--gold {
+  color: rgba(232, 200, 114, 0.55);
+}
+
+.fairy-sprite--pink {
+  color: rgba(244, 164, 200, 0.55);
+}
+
+.fairy-sprite--mint {
+  color: rgba(168, 230, 163, 0.55);
+}
+
+.fairy-sprite--lavender {
+  color: rgba(201, 184, 240, 0.55);
+}
+
+.fairy-sprite--flip {
+  transform: scaleX(-1);
+}
+
+.fairy-wing path {
+  fill: currentColor;
+  opacity: 0.55;
+}
+
+.fairy-wing--left {
+  transform-origin: 24px 24px;
+  animation: wingFlapLeft 0.45s ease-in-out infinite;
+}
+
+.fairy-wing--right {
+  transform-origin: 24px 24px;
+  animation: wingFlapRight 0.45s ease-in-out infinite;
+}
+
+@keyframes wingFlapLeft {
+  0%,
+  100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  50% {
+    transform: rotate(-18deg) scaleX(0.82);
+  }
+}
+
+@keyframes wingFlapRight {
+  0%,
+  100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+  50% {
+    transform: rotate(18deg) scaleX(0.82);
+  }
+}
+
+.fairy-head {
+  fill: rgba(255, 248, 230, 0.85);
+}
+
+.fairy-body,
+.fairy-hair {
+  fill: none;
+  stroke: rgba(255, 248, 230, 0.7);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.fairy-hair {
+  stroke-width: 1.2;
+  opacity: 0.8;
+}
+
+.fairy-spark {
+  fill: #fff8e7;
+  opacity: 0.9;
+  animation: sparkBlink 1.8s ease-in-out infinite;
+}
+
+.fairy-spark--delay {
+  animation-delay: 0.9s;
+}
+
+@keyframes sparkBlink {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.fairy-trail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 8px;
+  margin: -4px 0 0 -30px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 248, 220, 0.35),
+    transparent
+  );
+  filter: blur(3px);
+  opacity: 0.6;
+  animation: trailPulse 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes trailPulse {
+  0% {
+    opacity: 0.35;
+    transform: scaleX(0.8);
+  }
+  100% {
+    opacity: 0.75;
+    transform: scaleX(1.1);
+  }
+}
+
+/* Fairy flight paths */
+@keyframes fairy-path-1 {
+  0% {
+    transform: translate(-12vw, 18vh) rotate(-8deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(48vw, 6vh) rotate(6deg) scale(var(--fairy-scale));
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(112vw, 22vh) rotate(-4deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+}
+
+@keyframes fairy-path-2 {
+  0% {
+    transform: translate(110vw, 35vh) rotate(10deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.75;
+  }
+  45% {
+    transform: translate(42vw, 18vh) rotate(-5deg) scale(var(--fairy-scale));
+  }
+  92% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-15vw, 42vh) rotate(8deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+}
+
+@keyframes fairy-path-3 {
+  0% {
+    transform: translate(-10vw, 55vh) rotate(5deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  35% {
+    transform: translate(25vw, 28vh) rotate(-12deg) scale(var(--fairy-scale));
+  }
+  65% {
+    transform: translate(62vw, 45vh) rotate(8deg) scale(var(--fairy-scale));
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(108vw, 32vh) rotate(-3deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+}
+
+@keyframes fairy-path-4 {
+  0% {
+    transform: translate(50vw, -12vh) rotate(0deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.7;
+  }
+  55% {
+    transform: translate(20vw, 38vh) rotate(-15deg) scale(var(--fairy-scale));
+  }
+  88% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-12vw, 72vh) rotate(10deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+}
+
+@keyframes fairy-path-5 {
+  0% {
+    transform: translate(-8vw, 75vh) rotate(-6deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.82;
+  }
+  40% {
+    transform: translate(35vw, 52vh) rotate(12deg) scale(var(--fairy-scale));
+  }
+  70% {
+    transform: translate(72vw, 28vh) rotate(-8deg) scale(var(--fairy-scale));
+  }
+  92% {
+    opacity: 0.82;
+  }
+  100% {
+    transform: translate(115vw, 12vh) rotate(5deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+}
+
+@keyframes fairy-path-6 {
+  0% {
+    transform: translate(105vw, 68vh) rotate(12deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate(38vw, 72vh) rotate(-10deg) scale(var(--fairy-scale));
+  }
+  90% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-12vw, 58vh) rotate(6deg) scale(var(--fairy-scale));
+    opacity: 0;
+  }
+}
+
+/* ── Falling petals ── */
+.garden-petals {
+  position: absolute;
+  inset: 0;
+}
+
+.garden-petal {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 14px;
+  background: linear-gradient(135deg, rgba(244, 164, 200, 0.7), rgba(232, 200, 114, 0.4));
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(var(--petal-rotate, 0deg));
+  opacity: 0.55;
+  animation: petalFall linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-5vh) translateX(0) rotate(var(--petal-rotate, 0deg));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(105vh) translateX(var(--petal-drift, 0px))
+      rotate(calc(var(--petal-rotate, 0deg) + 180deg));
+    opacity: 0;
+  }
+}
+
+/* ── Floating motes ── */
+.garden-motes {
+  position: absolute;
+  inset: 0;
+}
+
+.garden-mote {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8e7, rgba(232, 200, 114, 0.2));
+  box-shadow: 0 0 6px rgba(232, 200, 114, 0.6);
+  animation: moteFloat ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes moteFloat {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-18px) scale(1.2);
+    opacity: 0.85;
+  }
+}
+
+/* ── Vine silhouettes at bottom ── */
+.garden-vines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22vh;
+  background: linear-gradient(
+    to top,
+    rgba(10, 30, 20, 0.55) 0%,
+    transparent 100%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 200'%3E%3Cpath fill='black' d='M0 200 L0 120 Q80 80 120 130 T200 90 T280 140 T360 70 T440 120 T520 60 T600 110 T680 50 T760 100 T840 40 T920 90 T1000 55 T1080 95 T1200 70 L1200 200 Z'/%3E%3C/svg%3E");
+  mask-size: cover;
+  mask-position: bottom;
+  opacity: 0.5;
+}
+
+/* ── Responsive / a11y ── */
+@media only screen and (max-width: 768px) {
+  .fairy-flyer:nth-child(n + 4) {
+    display: none;
+  }
+
+  .garden-petal:nth-child(n + 8) {
+    display: none;
+  }
+
+  .garden-mote:nth-child(n + 10) {
+    display: none;
+  }
+
+  .fairy-garden-bg .mushroom-glow {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fairy-flyer,
+  .garden-petal,
+  .garden-mote,
+  .fairy-wing--left,
+  .fairy-wing--right,
+  .fairy-spark,
+  .fairy-trail,
+  .fairy-garden-bg .mushroom-glow {
+    animation: none !important;
+  }
+
+  .fairy-flyer {
+    opacity: 0.35;
+  }
+
+  .fairy-flyer:nth-child(1) {
+    transform: translate(20vw, 20vh) scale(0.8);
+  }
+
+  .fairy-flyer:nth-child(2) {
+    transform: translate(70vw, 40vh) scale(0.65);
+  }
+}

@@ -2,8 +2,17 @@
   position: fixed;
   width: 100vw;
   height: var(--vh);
-  /* background-image: linear-gradient(#cbb1ff, #d8c4ff); */
-  background-color: #eae5ec;
+  background: radial-gradient(
+      ellipse at 30% 20%,
+      rgba(168, 230, 163, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 70% 80%,
+      rgba(244, 164, 200, 0.18),
+      transparent 50%
+    ),
+    #0a1410;
   z-index: 999999999;
   display: flex;
   place-items: center;
@@ -69,8 +78,13 @@
 .loading-clicked .loading-button {
   overflow: visible;
 }
+.loading-marquee span {
+  padding: 0px 50px;
+  position: relative;
+}
+
 .loading-hover {
-  background-color: #a87cff;
+  background: linear-gradient(135deg, #e8c872, #a8e6a3, #f4a4c8);
   width: 250px;
   height: 120px;
   position: absolute;
@@ -191,12 +205,18 @@
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  color: var(--backgroundColor);
+  color: var(--textPrimary);
 }
+
 .loader-title {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.15em;
+  background: var(--gradient-accent);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 @keyframes blink {
   0% {
@@ -272,7 +292,8 @@
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background-color: #a87cff;
+  background: var(--gradient-accent);
+  box-shadow: 0 0 12px var(--accentGlow);
   animation: ball25 7s infinite;
   transform: translateY(10px);
   animation-timing-function: cubic-bezier(0.3, 1.18, 0.63, 1.28);
@@ -283,25 +304,23 @@
   left: 0;
   width: 100%;
   transform: translateY(-50%);
-  color: var(--backgroundColor);
+  color: rgba(255, 255, 255, 0.06);
   font-size: 60px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
 }
-.loading-marquee span {
-  padding: 0px 50px;
-  position: relative;
-}
+
 .loading-marquee span::before {
   content: "";
   width: 20px;
   height: 20px;
-  background-color: var(--backgroundColor);
+  background: var(--gradient-accent);
   position: absolute;
   top: 50%;
   border-radius: 50px;
   left: 0px;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px var(--accentGlow);
 }
 @keyframes ball25 {
   0% {

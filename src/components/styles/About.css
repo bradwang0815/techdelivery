@@ -14,31 +14,75 @@
   padding-bottom: 0;
   width: 100%;
   max-width: calc(100% - 15px);
-}
-.about-me h3 {
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: 400;
-  color: var(--accentColor);
-  margin-bottom: 15px;
+  min-width: 0;
+  box-sizing: border-box;
+  position: relative;
 }
 
-.about-me p {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
-  letter-spacing: 0.5px;
-  word-spacing: 2px;
+.about-me::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 36px;
+  width: 3px;
+  height: calc(100% - 36px);
+  background: var(--gradient-accent);
+  border-radius: 4px;
+  box-shadow: 0 0 20px var(--accentGlow);
+}
+
+.about-me h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  color: var(--accentSecondary);
+  margin-bottom: 12px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.about-me p,
+.about-me .para,
+.about-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  word-spacing: normal;
+  color: var(--textSecondary);
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  max-width: 100%;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+}
+
+.about-sentence {
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-character;
 }
 
 .about-me .split-word {
-  display: inline-block;
-  margin-right: 0.3em;
+  display: inline;
+  margin-right: 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .about-me .split-line {
   display: block;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  overflow: visible;
 }
 
 @media only screen and (min-width: 600px) {
@@ -46,30 +90,32 @@
     justify-content: center;
   }
   .about-me {
-    width: 500px;
+    width: min(500px, 100%);
   }
   .about-me h3 {
-    font-size: 22px;
-    letter-spacing: 6px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
   }
-  .about-me p {
-    font-size: 28px;
-    line-height: 32px;
+  .about-me p,
+  .about-sentence {
+    font-size: 15px;
+    line-height: 1.8;
   }
 }
 @media only screen and (min-width: 768px) {
   .about-me {
-    width: 500px;
+    width: min(500px, calc(100% - 70px));
     max-width: calc(100% - 70px);
     transform: translateY(0%);
   }
   .about-me h3 {
-    font-size: 25px;
-    letter-spacing: 7px;
+    font-size: 15px;
+    letter-spacing: 0.12em;
   }
-  .about-me p {
-    font-size: 33px;
-    line-height: 36px;
+  .about-me p,
+  .about-sentence {
+    font-size: 15px;
+    line-height: 1.85;
   }
   .about-section {
     opacity: 1;
@@ -86,16 +132,19 @@
   }
   .about-me {
     padding: 0px;
-    width: 50%;
+    width: min(50%, 560px);
+    max-width: 50%;
   }
-  .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+  .about-me p,
+  .about-sentence {
+    font-size: clamp(0.9rem, 0.95vw, 1rem);
+    line-height: 1.85;
   }
 }
 @media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+  .about-me p,
+  .about-sentence {
+    font-size: 1rem;
+    line-height: 1.85;
   }
 }
