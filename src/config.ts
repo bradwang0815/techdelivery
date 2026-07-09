@@ -5,7 +5,7 @@ export const config = {
         givenName: "智広",
         fullName: "近藤智広",
         nameReading: "コンドウ トモヒロ",
-        title: "バックエンドエンジニア / 実装リード",
+        title: "フルスタックエンジニア / 実装リード",
         description:
             "約10年のWebアプリケーション開発経験を持ち、Ruby on Railsを中心としたバックエンド開発が専門領域です。物件・商品・会員データの管理、一覧・検索API、MySQLチューニング、RSpecによるテスト、AWS上での運用まで一貫して担当してきました。",
     },
