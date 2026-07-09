@@ -256,7 +256,7 @@ export const config = {
     ui: {
         landing: {
             greeting: "はじめまして、",
-            roleLine1: "バックエンドエンジニア",
+            roleLine1: "フルスタックエンジニア",
             roleLine2: "実装リード",
         },
         nav: {
@@ -296,7 +296,7 @@ export const config = {
         },
         loading: {
             brand: "近藤智広",
-            marquee: "バックエンドエンジニア",
+            marquee: "フルスタックエンジニア / 実装リード",
             marqueeAlt: "実装リード",
             loading: "読み込み中",
             welcome: "ようこそ",
