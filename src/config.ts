@@ -23,10 +23,10 @@ export const config = {
         {
             position: "契約エンジニア（実装リード）",
             company: "株式会社オヤテックジャパン",
-            period: "2026年1月 - 現在",
+            period: "2024年2月 - 現在 ",
             location: "フルリモート",
             description:
-                "5名規模のマーケティングオートメーションSaaS刷新案件で、Ruby on Rails / Laravel APIの設計・実装・レビュー、MySQL改善、AWS運用、GitHub ActionsによるCI/CD整備を担当。約3ヶ月で主要機能の刷新と本番運用体制を確立。",
+                "Webシステム開発を手掛ける企業において、金融、Web3、業務システムなどの開発プロジェクトに従事しました。シニアフロントエンドエンジニアおよびフルスタックエンジニアとして、要件定義から設計、開発、テスト、リリース、運用・保守まで一貫して担当しました。また、直近のプロジェクトでは、リードエンジニア兼準PMとして、技術面・プロジェクト推進の両面からチームをリードし、開発体制の整備や進捗・品質管理にも携わりました。",
             responsibilities: [
                 "既存コードベースの現状分析と改善項目の分類・優先順位付け",
                 "Ruby on Rails / Laravel APIのリファクタリング、OpenAPIドキュメント整備",
@@ -37,11 +37,11 @@ export const config = {
         },
         {
             position: "フルスタックエンジニア",
-            company: "株式会社Gonmura",
-            period: "2024年4月 - 2025年12月",
+            company: "MediFrame株式会社",
+            period: "2020年12月 - 2024年1月 ",
             location: "フルリモート",
             description:
-                "お笑い・エンタメ領域の自社サービス開発に従事。Fanfun運用基盤の生成AIサポート機能、ライブ公演・チケット管理、公演集客・データ分析SaaSの性能改善を担当。",
+                "医療DX分野において、服薬管理および服薬アフターケアサービスの開発に従事しました。患者・病院・薬局・製薬会社をつなぐクラウド型プラットフォーム「MediFrame」およびSMSを活用した服薬指導サービス「MediFrame SMS」の開発を担当しました。バックエンドエンジニアとして、Node.js、Java（Spring Boot）を活用したAPIおよび業務ロジックの設計・実装を主に担当し、その後はフルスタックエンジニアとして、新機能の開発や既存機能の改善にも携わりました。医療従事者との仕様調整や既存システムとの連携、保守性および拡張性を考慮した設計を念頭に置き、品質の向上と安定した運用に貢献しました。",
             responsibilities: [
                 "OpenAI APIを用いたFAQ検索・回答候補提示・根拠リンク表示機能の設計・実装",
                 "公演案件の状態遷移を一覧化し、運営メンバーの確認作業を削減",
@@ -52,11 +52,11 @@ export const config = {
         },
         {
             position: "フルスタックエンジニア / バックエンド主担当",
-            company: "株式会社Proteinum",
-            period: "2021年4月 - 2024年3月",
+            company: "株式会社アイ・トライブ",
+            period: "2016年4月 - 2020年11月 ",
             location: "日本",
             description:
-                "ECコンサルティング・運営代行、EC支援SaaS、D2C事業に関わるWebサービス開発に従事。2023年頃から刷新案件でバックエンド主担当となり、設計整理やレビュー、顧客向け進捗共有の補助を行いました。",
+                "大阪大学EDGEプログラムにおける教育・イノベーション支援システムの開発プロジェクトに参画。フロントエンドエンジニアとして開発に携わった後、フルスタックエンジニアとしてWebシステム全体の設計・開発・運用・保守を担当しました。Laravelを中心とした業務システム開発を通じて、要件に応じた設計・実装から運用改善まで幅広い経験を積み、Webアプリケーション開発の基盤となる技術力を培いました。",
             responsibilities: [
                 "EC支援SaaS業務管理システムのLaravel APIリニューアルとRedisキャッシュ戦略",
                 "Node.js APIゲートウェイ設計とOpenAPI / モック駆動開発の導入",
@@ -64,21 +64,6 @@ export const config = {
                 "既存仕様差分約80項目の一覧化と段階移行による手戻り削減",
             ],
             technologies: ["Laravel", "React", "Vue.js", "Node.js", "MySQL", "Redis", "OpenAPI", "AWS"],
-        },
-        {
-            position: "メンバー / サブリーダー補佐",
-            company: "ヴィンテージIT株式会社",
-            period: "2015年10月 - 2021年3月",
-            location: "日本",
-            description:
-                "医療・福祉領域に特化したソフトウェアメーカーにて、施設基準管理、相談・自立支援業務管理、利用者向けモバイルアプリ、AWS移行などを経験。Webアプリケーション開発の基礎を段階的に習得しました。",
-            responsibilities: [
-                "医療・福祉クラウド基盤のAWS移行（ECS / RDS / S3 / CloudFront）",
-                "React Native + Node.js BFFによるヘルスケアアプリ新規開発",
-                "Laravel + Vue.jsによる社会福祉協議会向け業務管理SaaSの承認フロー実装",
-                "約12万件のデータ移行と帳票・添付ファイルのS3移行を完了",
-            ],
-            technologies: ["Laravel", "React", "Vue.js", "React Native", "AWS", "PHP", "MySQL", "GitHub Actions"],
         },
     ],
     projects: [
