@@ -69,11 +69,14 @@ const Work = () => {
             <div className="work-box" key={project.id}>
               <div className="work-info">
                 <div className="work-title">
-                  <h3>0{index + 1}</h3>
+                  <h3>{String(index + 1).padStart(2, "0")}</h3>
 
                   <div>
                     <h4>{project.title}</h4>
-                    <p>{project.category}</p>
+                    <p>
+                      {project.category}
+                      {project.period ? ` · ${project.period}` : ""}
+                    </p>
                   </div>
                 </div>
                 <h4>{config.ui.work.toolsLabel}</h4>
